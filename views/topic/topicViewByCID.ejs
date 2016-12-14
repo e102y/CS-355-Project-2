@@ -1,0 +1,33 @@
+<html>
+<head>
+    <title>Topics By <%= result[0].creator_name %></title>
+</head>
+<body>
+<h1>Topics</h1>
+<ul>
+    <table border="1">
+    <tr>Topic Name:<th></th><th>Description:</th><th>Information</th></tr>
+    <% for(var i=0; result.length > i; i++ ) { %>
+    <tr>
+        <td><a href="/subject/?subject_date=<%= result[i].date_of_creation %>"><%= result[i].title %></a></td>
+        <td><%= result[i].description %></td>
+        <td>
+            <a href="/user/?account_id=<%= result[i].creator_id %>">
+                <%= result[i].creator_name %>
+            </a>
+            <br />
+            <%= result[i].date_of_creation %>
+            <br>
+        </td>
+        <td><form action="/topic/delete/">
+                <input type="hidden" name="resume_id" id="resume_id" value="<%= result[i].date_of_creation %>" />
+                <input type="submit" value="Delete"/>
+            </form>
+        </td>
+    </tr>
+    <% } %>
+    </table>
+</ul>
+</body>
+
+</html>

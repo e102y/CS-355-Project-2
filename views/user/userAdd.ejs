@@ -1,0 +1,40 @@
+<html>
+<head>
+    <title>Add New Account</title>
+</head>
+<body>
+<h1>Add New Account</h1>
+<form action="/account/insert" method="get">
+    First Name: <input id="account_fname" name="account_fname" type="text" />
+    </br>
+    Last Name: <input id="account_lname" name="account_lname" type="text" />
+    </br>
+    Username: <input id="account_username" name="account_username" type="text" />
+    </br>
+    Birthdate:
+    <% var month = ["January", "Febuary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]; %>
+    <br/>
+    Day:
+    <select id="account_Bday" name="account_Bday">
+        <% for(var i=1; 32 > i; i++ ) { %>
+        <option value=<%=i%>><%=i%></option>
+        <% } %>
+    </select>
+    Month:
+    <select id="account_Bmonth" name="account_Bmonth">
+        <% for(var i=1; 13 > i; i++ ) { %>
+        <option value=<%= i %>><%= month[i-1] %></option>
+        <% } %>
+    </select>
+    Year:
+    <select id="account_Byear" name="account_Byear">
+        <% for(var i=2010; 1914 < i; i-- ) { %>
+        <option value=<%=i%>><%=i%></option>
+        <% } %>
+    </select>
+    <input type="submit" />
+
+</form>
+</body>
+
+</html>

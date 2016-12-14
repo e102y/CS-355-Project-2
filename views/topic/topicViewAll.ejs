@@ -1,0 +1,36 @@
+<html>
+<head>
+    <title>Topics</title>
+</head>
+<body>
+<h1>Topics</h1>
+
+<br />
+<table border="1">
+    <tr>Topic Name:<th></th><th>Description:</th><th>Information</th><th>Action</th></tr>
+    <% for(var i=0; result.length > i; i++ ) { %>
+    <tr>
+        <td><a href="/topic/?topic_date=<%= result[i].date_of_creation %>"><%= result[i].title %></a></td>
+        <td><%= result[i].description %></td>
+        <td>
+            <a href="/user/?account_id=<%= result[i].creator_id %>">
+                <%= result[i].creator_name %>
+            </a>
+            <br />
+            <%= result[i].date_of_creation %>
+            <br>
+        </td>
+        <td>
+            <button onclick="event.preventDefault();window.location.href='/company/edit/?company_id=<%= result[i].company_id %>'">Edit</button>
+            <form action="/topic/delete/">
+                <input type="hidden" name="resume_id" id="resume_id" value="<%= result[i].date_of_creation %>" />
+                <input type="submit" value="Delete"/>
+            </form>
+        </td>
+    </tr>
+    <% } %>
+</table>
+<a href="/topic/add">Add New Topic</a> <br />
+</body>
+
+</html>
