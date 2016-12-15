@@ -34,9 +34,9 @@ exports.insert = function(params, callback) {
 
 };
 
-exports.delete = function(post_date_of_creation, callback) {
-    var query = 'DELETE FROM post WHERE date_of_creation = ?';
-    var queryData = [post_date_of_creation];
+exports.delete = function(post_id, callback) {
+    var query = 'DELETE FROM post WHERE post_id = ?';
+    var queryData = [post_id];
 
     connection.query(query, queryData, function(err, result) {
         callback(err, result);
@@ -45,8 +45,8 @@ exports.delete = function(post_date_of_creation, callback) {
 };
 
 exports.update = function(params, callback) {
-    var query = 'UPDATE school SET school_name = ?, address_id = ? WHERE school_id = ?';
-    var queryData = [params.school_name, params.address_id, params.school_id];
+    var query = 'UPDATE post SET subject = ?, text = ? WHERE post_id = ?';
+    var queryData = [params.post_Subject, params.post_Body, params.post_id];
 
     connection.query(query, queryData, function(err, result) {
         callback(err, result);
@@ -55,9 +55,9 @@ exports.update = function(params, callback) {
 
 
 
-exports.edit = function(school_id, callback) {
-    var query = 'CALL school_getinfo(?)';
-    var queryData = [school_id];
+exports.edit = function(post_id, callback) {
+    var query = 'SELECT * FROM PostsinaSubject WHERE post_id = ?';
+    var queryData = [post_id];
 
     connection.query(query, queryData, function(err, result) {
         callback(err, result);

@@ -73,12 +73,12 @@ router.get('/insert', function(req, res){
 
 // Delete a user for the given creation date
 router.get('/delete', function(req, res){
-    if(req.query.date_of_creation == null) {
-        res.send('creation date is null');
+    if(req.query.user_id == null) {
+        res.send('user_id is null');
     }
     else {
         user_dal.delete(
-            req.query.date_of_creation,
+            req.query.user_id,
             function(err, result){
                 if(err) {
                     res.send(err);

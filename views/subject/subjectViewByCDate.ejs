@@ -36,8 +36,11 @@
                 <%= result[i].date_of_creation %>
                 <br>
             </td>
-            <td><form action="/subject/delete/">
-                    <input type="hidden" name="resume_id" id="resume_id" value="<%= result[i].date_of_creation %>" />
+            <td>
+                <button onclick="event.preventDefault();window.location.href='/subject/edit/?topic_id=<%= result[i].topic_id %>&subject_id=<%= result[i].subject_id %>'">Edit</button>
+                <form action="/subject/delete/">
+                    <input type="hidden" name="topic_id" id="topic_id" value="<%= result[i].topic_id %>" />
+                    <input type="hidden" name="subject_id" id="subject_id" value="<%= result[i].subject_id %>" />
                     <input type="submit" value="Delete"/>
                 </form>
             </td>

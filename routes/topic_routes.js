@@ -81,12 +81,12 @@ router.get('/insert', function(req, res){
 
 // Delete a topic for the given creation date
 router.get('/delete', function(req, res){
-    if(req.query.date_of_creation == null) {
-        res.send('creation date is null');
+    if(req.query.topic_id == null) {
+        res.send('topic id is null');
     }
     else {
         topic_dal.delete(
-            req.query.date_of_creation,
+            req.query.topic_id,
             function(err, result){
                 if(err) {
                     res.send(err);

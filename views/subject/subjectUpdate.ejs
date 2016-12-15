@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Update <%= subject[0].title%></title>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/TRROStylesheet.css">
+</head>
+<body style = "background-color: #c9ddff">
+<h1>Update <%= subject[0].title%></h1>
+<ul>
+    <li><a class="nav" href="../">Home</a></li>
+    <li><a class="nav" href="/subject/all">Subjects</a></li>
+    <li><a class="nav" href="/about">About</a></li>
+    <li><a class="nav" href="/user/all">Users</a></li>
+</ul>
+<br/>
+<form action="/subject/update" method="get">
+    <input type="hidden" id="subject_id" name="subject_id" value="<%= subject[0].subject_id %>">
+    New Title: <br/>
+    <input id="subject_title" name="subject_title" type="text" style="width:25em" value="<%= subject[0].title%>"/>
+    <br />
+
+    New Description:
+    <br/>
+    <input id="subject_description" name="subject_description" style="width:75em" type="text" value="<%= subject[0].description%>"/>
+    <br />
+    <br/>
+    <input type="hidden" name="topic_id" id="topic_id" value="<%= subject[0].topic_id %>" />
+    <input type="submit" />
+
+</form>
+
+</body>
+</html>

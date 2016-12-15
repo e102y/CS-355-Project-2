@@ -63,19 +63,19 @@ router.get('/insert', function(req, res){
 
 // Delete a subject for the given creation date
 router.get('/delete', function(req, res){
-    if(req.query.date_of_creation == null) {
-        res.send('creation date is null');
+    if(req.query.subject_id == null) {
+        res.send('subject id is null');
     }
     else {
         subject_dal.delete(
-            req.query.date_of_creation,
+            req.query.subject_id,
             function(err, result){
                 if(err) {
                     res.send(err);
                 }
                 else {
                     //poor practice, but we will handle it differently once we start using Ajax
-                    res.redirect(302, '/subject/all');
+                    res.redirect(302, '/subject/?topic_id=' + req.query.topic_id);
                 }
             }
         );
@@ -83,12 +83,12 @@ router.get('/delete', function(req, res){
 });
 
 router.get('/edit', function(req, res){
-    if(req.query.date_of_creation == null) {
-        res.send('the subject\'s date of creation  is required');
+    if(req.query.subject_id == null) {
+        res.send('the subject\'s id  is required');
     }
     else {
         subject_dal.edit(req.query.subject_id, function(err, result){
-            res.render('subject/subjectUpdate', {subject: result[0][0], address: result[1]});
+            res.render('subject/subjectUpdate', {'subject': result});
         });
     }
 
@@ -96,7 +96,7 @@ router.get('/edit', function(req, res){
 
 router.get('/update', function(req, res){
     subject_dal.update(req.query, function(err, result){
-        res.redirect(302, '/subject/all');
+        res.redirect(302, '/subject/?topic_id=' + req.query.topic_id);
     });
 });
 

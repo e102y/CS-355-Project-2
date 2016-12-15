@@ -35,9 +35,9 @@ exports.insert = function(params, callback) {
 
 };
 
-exports.delete = function(subject_date_of_creation, callback) {
-    var query = 'DELETE FROM subject WHERE date_of_creation = ?';
-    var queryData = [subject_date_of_creation];
+exports.delete = function(subject_id, callback) {
+    var query = 'DELETE FROM subject WHERE subject_id = ?';
+    var queryData = [subject_id];
 
     connection.query(query, queryData, function(err, result) {
         callback(err, result);
@@ -46,8 +46,8 @@ exports.delete = function(subject_date_of_creation, callback) {
 };
 
 exports.update = function(params, callback) {
-    var query = 'UPDATE school SET school_name = ?, address_id = ? WHERE school_id = ?';
-    var queryData = [params.school_name, params.address_id, params.school_id];
+    var query = 'UPDATE subject SET title = ?, description = ? WHERE subject_id = ?';
+    var queryData = [params.subject_title, params.subject_description, params.subject_id];
 
     connection.query(query, queryData, function(err, result) {
         callback(err, result);
@@ -56,9 +56,9 @@ exports.update = function(params, callback) {
 
 
 
-exports.edit = function(school_id, callback) {
-    var query = 'CALL school_getinfo(?)';
-    var queryData = [school_id];
+exports.edit = function(subject_id, callback) {
+    var query = 'SELECT * FROM SubjectsinaTopic WHERE subject_id = ?;';
+    var queryData = [subject_id];
 
     connection.query(query, queryData, function(err, result) {
         callback(err, result);

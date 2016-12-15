@@ -36,9 +36,9 @@ exports.insert = function(params, callback) {
 
 };
 
-exports.delete = function(topic_date_of_creation, callback) {
-    var query = 'DELETE FROM topic WHERE date_of_creation = ?';
-    var queryData = [topic_date_of_creation];
+exports.delete = function(topic_id, callback) {
+    var query = 'DELETE FROM topic WHERE topic_id = ?';
+    var queryData = [topic_id];
 
     connection.query(query, queryData, function(err, result) {
         callback(err, result);

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Update <%= post[0].subject%></title>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/TRROStylesheet.css">
+</head>
+<body style = "background-color: #c9ddff">
+<h1>Update <%= post[0].subject%></h1>
+<ul>
+    <li><a class="nav" href="../">Home</a></li>
+    <li><a class="nav" href="/posts/?subject_id=<%= subject_id %>&topic_id=<%= topic_id %>">Posts</a></li>
+    <li><a class="nav" href="/about">About</a></li>
+    <li><a class="nav" href="/user/all">Users</a></li>
+</ul>
+<br/>
+<form action="/posts/update" method="get">
+<ul>
+    <table border="1">
+        <tr><th>Information</th><th>Post:</th><th>Actions</th></tr>
+        <td style="width:100px;">
+            <br />
+            <h4 style = "display: block;margin-top: 0; margin-bottom: 0;text-align: center;">
+                <a href="/user/?user_id=<%= post[0].poster_ID %>">
+                    <%= post[0].poster_name %>
+                </a>
+            </h4>
+            <br/>
+            <h6 style = "margin-top: 0; margin-bottom: 0;text-align: center;">
+                Post Date:
+                <%= post[0].date_of_creation %>
+            </h6>
+            <br></td>
+        <td style="vertical-align: top; width:750px;max-width:1000px; word-wrap:break-word;">
+            <input id="post_Subject" name="post_Subject" type="text" value="<%= post[0].subject%>" style="width:45em"/>
+            <hr>
+            <input type="hidden" name="topic_id" id="topic_id" value="<%= topic_id %>" />
+            <input type="hidden" name="subject_id" id="subject_id" value="<%= subject_id %>" />
+            <input type="hidden" name="post_id" id="post_id" value="<%= post[0].post_id %>" />
+            <input id="post_Body" name="post_Body" type="text" value="<%= post[0].text%>" style="width:750px" />
+            <br />
+            <br />
+        </td>
+        <td style="text-align: center;vertical-align: top;">
+            <input type="submit" />
+        </td>
+    </table>
+    </ul>
+<br/>
+
+
+
+</form>
+
+</body>
+</html>
