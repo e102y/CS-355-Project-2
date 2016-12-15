@@ -45,7 +45,7 @@ exports.delete = function(post_id, callback) {
 };
 
 exports.update = function(params, callback) {
-    var query = 'UPDATE post SET subject = ?, text = ? WHERE post_id = ?';
+    var query = 'UPDATE post SET subject = ?, text = ?, modification_date = NOW() WHERE post_id = ?';
     var queryData = [params.post_Subject, params.post_Body, params.post_id];
 
     connection.query(query, queryData, function(err, result) {
