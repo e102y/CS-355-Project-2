@@ -1,13 +1,13 @@
 <html>
 <head>
-    <title>Add New Subject</title>
+    <title>Add New Post</title>
 </head>
 <body>
-<h1>Add New Subject</h1>
-<form action="/subject/insert" method="get">
-    Subject Name: <input id="subject_name" name="subject_name" type="text" />
+<h1>Add New Post</h1>
+<form action="/posts/insert" method="get">
+    <input id="post_Subject" name="post_Subject" type="text" /> :Subject
     <br />
-    Subject Description: <input id="subject_description" name="subject_description" type="text" style="width:500px" />
+    <input id="post_Body" name="post_Body" type="text" style="width:500px" /> :Text
     <br />
     <br />
     User:
@@ -17,9 +17,10 @@
         <% } %>
     </select>
     <br />
+    <input type="hidden" name="subject_id" id="subject_id" value="<%= subject_id %>" />
     <input type="hidden" name="topic_id" id="topic_id" value="<%= topic_id %>" />
     <br />
-    <input type="submit" value="Create" />
+    <input type="submit" name="Create" />
 
 </form>
 </body>

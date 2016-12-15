@@ -6,9 +6,9 @@ var connection = mysql.createConnection(db.config);
 
 
 
-exports.getById = function(post_date, callback) {
-    var query = 'SELECT * FROM PostsinaSubject WHERE post_date = ?';
-    var queryData = [post_date];
+exports.getById = function(subject_id, callback) {
+    var query = 'SELECT * FROM PostsinaSubject WHERE subject_id = ?';
+    var queryData = [subject_id];
 
     connection.query(query, queryData, function(err, result) {
         callback(err, result);
@@ -22,11 +22,11 @@ exports.getById = function(post_date, callback) {
  Group By p.date_of_creation;
  */
 exports.insert = function(params, callback) {
-    var query = 'CALL NewPost(\'?\', \'?\', ?, \'?\');';
+    var query = 'CALL NewPost(?, ?, ?, ?);';
 
     // the question marks in the sql query above will be replaced by the values of the
     // the data in queryData
-    var queryData = [params.post_description, post_title, params.creator_id, subject_title];
+    var queryData = [params.post_Body, params.post_Subject, params.creator_id, params.subject_id];
 
     connection.query(query, queryData, function(err, result) {
         callback(err, result);

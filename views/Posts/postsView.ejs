@@ -1,26 +1,82 @@
 <html>
 <head>
-    <title>Resumes</title>
+    <% var a; if(result.length > 0){ a = result[0].subjectTitle } else { a = "Be the first to post!" }  %>
+    <title>
+        <%= a; %>
+    </title>
+    <% ; %>
 </head>
 <body>
-<h1>Resumes</h1>
-<a href="/resume/add">Add New Resume</a> <br />
+<h1><%= a; %></h1>
+<a href="/subject/?topic_id=<%= topic_id %>">
+    Return to Subject
+</a>
+<ul>
+    <table border="1">
+        <tr><th>Information</th><th>Post:</th><th>Actions</th></tr>
+        <% for(var i=0; result.length > i; i++ ) { %>
+        <td style="width:100px;">
+            <br />
+            <h4 style = "display: block;margin-top: 0; margin-bottom: 0;text-align: center;">
+            <a href="/user/?user_id=<%= result[i].poster_id %>">
+                    <%= result[i].poster_name %>
+                </a>
+            </h4>
+            <br/>
+            <h6 style = "margin-top: 0; margin-bottom: 0;text-align: center;">
+                Post Date:
+                <%= result[i].date_of_creation %>
+            </h6>
+                <br></td>
+        <td style="vertical-align: top; width:750px;max-width:1000px; word-wrap:break-word;">
+            <h3 style = " display: inline;font-size: 1em; margin-top: 0; margin-bottom: 0;text-align: left;">
+                <%= result[i].subject %>
+            </h3>
+        <br/>
+            <hr>
+            <%= result[i].text %></td>
 
-<br />
-<table border="1">
-    <tr><th>Resume Name</th><th>User Name</th><th>Action</th></tr>
-    <% for(var i=0; result.length > i; i++ ) { %>
-    <tr>
-        <td><a href="/resume/?resume_id=<%= result[i].resume_id %>"><%= result[i].resume_name %></a></td>
-        <td><a href="/account/?account_id=<%= result[i].user_account_id %>"><%= result[i].first_name %> <%= result[i].last_name %></a></td>
-        <td><form action="/resume/delete/">
-                <input type="hidden" name="resume_id" id="resume_id" value="<%= result[i].resume_id %>" />
-                <input type="submit" value="Delete"/>
+            <td style="text-align: center;vertical-align: top;"><form action="/post/delete/">
+                    <input type="hidden" name="resume_id" id="resume_id" value="<%= result[i].date_of_creation %>" />
+                    <input type="submit" value="Delete"/>
+                </form>
+            </td>
+        </tr>
+        <% } %>
+
+
+        <tr>
+            <form action="/posts/insert" method="get">
+            <td>
+                <h4 style = "display: block;margin-top: 0; margin-bottom: 0;text-align: center;">
+                New Post
+                <br/>
+                    <br/>
+                User:
+                <select id="creator_id" name="creator_id">
+                    <% for(var i=0; user.length > i; i++ ) { %>
+                    <option value="<%= user[i].user_id %>"><%= user[i].username %></option>
+                    <% } %>
+                </select>
+                    </h4>
+            </td>
+            <td>
+                <input id="post_Subject" name="post_Subject" type="text" style="width:45em"/> :Subject
+                <hr>
+                <input id="post_Body" name="post_Body" type="text" style="width:700px" /> :Text
+                <br />
+                <br />
+            </td>
+                <td style="vertical-align: top;">
+                    <input type="hidden" name="subject_id" id="subject_id" value="<%= subject_id %>" />
+                    <input type="hidden" name="topic_id" id="topic_id" value="<%= topic_id %>" />
+                    <input type="submit" value="Submit" />
+
+                </td>
             </form>
-        </td>
-    </tr>
-    <% } %>
-</table>
+        </tr>
+    </table>
+</ul>
 </body>
 
 </html>

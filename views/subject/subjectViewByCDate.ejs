@@ -1,13 +1,13 @@
 <html>
 <head>
-    <% var a; if(result.length > 0){ a = "Subjects Under " + result[0].topicTitle } else { a = "Empty Topic" }  %>
+    <% var a; if(result.length > 0){ a = "Subjects In " + result[0].topicTitle } else { a = "Empty Topic" }  %>
     <title>
         <%= a %>
     </title>
     <% ; %>
 </head>
 <body>
-<h1>Subjects</h1>
+<h1><%= a; %></h1>
 <a href="/topic/all">
     Return to Topics
 </a>
@@ -16,11 +16,11 @@
         <tr><th>Subject Name:</th><th>Description:</th><th>Information</th><th>Actions</th></tr>
         <% for(var i=0; result.length > i; i++ ) { %>
         <tr>
-            <td><a href="/post/?topic_date=<%= result[i].date_of_creation %>"><%= result[i].title %></a></td>
+            <td><a href="/posts/?subject_id=<%= result[i].subject_id %> &topic_id=<%= topic_id %>"><%= result[i].title %></a></td>
             <td><%= result[i].description %></td>
             <td>
                 Creator:
-                <a href="/user/?account_id=<%= result[i].creator_id %>">
+                <a href="/user/?user_id=<%= result[i].creator_id %>">
                     <%= result[i].creator_name %>
                 </a>
                 <br />
