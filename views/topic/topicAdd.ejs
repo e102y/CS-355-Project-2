@@ -22,14 +22,14 @@
     User:
     <select id="creator_id" name="creator_id">
         <% for(var i=0; user.length > i; i++ ) { %>
-        <option value="<%= user[i].user_id %>"><%= user[i].username %></option>
+        <option value="<%= user[i].user_id %>"><%= user[i].user_id %>: <%= user[i].username %></option>
         <% } %>
     </select>
     <br />
     Moderator:
     <select id="moderator_id" name="moderator_id">
         <% for(var i=0; user.length > i; i++ ) { %>
-        <option value="<%= user[i].user_id %>"><%= user[i].username %></option>
+        <option value="<%= user[i].user_id %>"><%= user[i].user_id %>: <%= user[i].username %></option>
         <% } %>
     </select>
     <br />

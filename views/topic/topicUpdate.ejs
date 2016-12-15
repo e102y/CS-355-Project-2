@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Update <%= topic[0].title%></title>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/TRROStylesheet.css">
+</head>
+<body style = "background-color: #c9ddff">
+<h1>Update <%= topic[0].title%></h1>
+<ul>
+    <li><a class="nav" href="../">Home</a></li>
+    <li><a class="nav" href="/topic/all">Topics</a></li>
+    <li><a class="nav" href="/about">About</a></li>
+    <li><a class="nav" href="/user/all">Users</a></li>
+</ul>
+<br/>
+<form action="/topic/update" method="get">
+    <input type="hidden" id="topic_id" name="topic_id" value="<%= topic[0].topic_id %>">
+    New Title: <br/>
+    <input id="topic_title" name="topic_title" type="text" style="width:25em" value="<%= topic[0].title%>"/>
+    <br />
+
+    New Description:
+    <br/>
+    <input id="topic_description" name="topic_description" style="width:75em" type="text" value="<%= topic[0].description%>"/>
+    <br />
+    New Moderator:
+    <br/>
+    <select id="moderator_id" name="moderator_id">
+        <% for(var i=0; user.length > i; i++ ) { %>
+        <option value="<%= user[i].user_id %>"><%= user[i].user_id %>: <%= user[i].username %></option>
+        <% } %>
+    </select>
+    <br/>
+    <input type="submit" />
+
+</form>
+
+</body>
+</html>

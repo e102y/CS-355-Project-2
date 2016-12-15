@@ -100,16 +100,23 @@ router.get('/delete', function(req, res){
     }
 });
 
-router.get('/edit', function(req, res){
-    if(req.query.topic_id == null) {
-        res.send('An topic id is required');
+router.get('/edit', function(req, res) {
+
+    if (req.query.topic_id == null) {
+        res.send('A topic id is required');
     }
     else {
-        topic_dal.edit(req.query.topic_id, function(err, result){
-            res.render('topic/topicUpdate', {topic: result[0][0], address: result[1]});
+        user_dal.getAll(function (err1, result1) {
+            if (err1) {
+                res.send(err1);
+            }
+            else {
+                topic_dal.edit(req.query.user_id, function (err, result) {
+                    res.render('topic/topicUpdate', {'topic': result, 'user': result1});
+                });
+            }
         });
     }
-
 });
 
 router.get('/update', function(req, res){

@@ -47,8 +47,8 @@ exports.delete = function(topic_date_of_creation, callback) {
 };
 
 exports.update = function(params, callback) {
-    var query = 'UPDATE school SET school_name = ?, address_id = ? WHERE school_id = ?';
-    var queryData = [params.school_name, params.address_id, params.school_id];
+    var query = 'UPDATE topic SET title = ?, description = ?, moderator_id = ? WHERE topic_id = ?';
+    var queryData = [params.topic_title, params.topic_description, params.moderator_id, params.topic_id];
 
     connection.query(query, queryData, function(err, result) {
         callback(err, result);
@@ -57,9 +57,9 @@ exports.update = function(params, callback) {
 
 
 
-exports.edit = function(school_id, callback) {
-    var query = 'CALL school_getinfo(?)';
-    var queryData = [school_id];
+exports.edit = function(topic_id, callback) {
+    var query = 'Select * FROM ShowTopics where topic_id = topic_id';
+    var queryData = [topic_id];
 
     connection.query(query, queryData, function(err, result) {
         callback(err, result);

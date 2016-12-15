@@ -19,8 +19,8 @@
     <% for(var i=0; result.length > i; i++ ) { %>
     <tr>
         <td><a href="/subject/?topic_id=<%= result[i].topic_id %>"><%= result[i].title %></a></td>
-        <td><%= result[i].description %></td>
-        <td>
+        <td style = 'max-width:750px; word-wrap:break-word;'><%= result[i].description %></td>
+        <td style = 'min-width:15em;'>
             Creator:
             <br/>
             <a href="/user/?account_id=<%= result[i].creator_ID %>">
@@ -30,8 +30,8 @@
             Creation Date: <br/> <%= result[i].date_of_creation %>
             <br>
         </td>
-        <td>
-            <button onclick="event.preventDefault();window.location.href='/company/edit/?creator_id=<%= result[i].creator_ID %>'">Edit</button>
+        <td style = "text-align: center">
+            <button onclick="event.preventDefault();window.location.href='/topic/edit/?topic_id=<%= result[i].topic_id %>'">Edit</button>
             <br/>
             <form action="/topic/delete/">
                 <input type="hidden" name="topic_id" id="topic_id" value="<%= result[i].date_of_creation %>" />
