@@ -13,7 +13,7 @@ a.nav:link, a.nav:visited {
     width: 200px;
     /*font-weight: bold;*/
     color: #4d4d4d;
-    background-color: #ff6600;
+    background-color: #eff5ff;
     text-align: center;
     padding: 4px;
     text-decoration: none;
@@ -21,7 +21,7 @@ a.nav:link, a.nav:visited {
 }
 
 a.nav:hover, a.nav:active {
-    background-color: #ff0000;
+    background-color: #ffffff;
 }
 
 

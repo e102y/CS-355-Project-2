@@ -10,6 +10,7 @@ var topic = require('./routes/topic_routes');
 var subject = require('./routes/subject_routes');
 var post = require('./routes/post_routes');
 var user = require('./routes/user_routes');
+var about = require('./routes/about');
 var app = express();
 
 // view engine setup
@@ -27,6 +28,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/index', index);
+app.use('/about', about);
 app.use('/topic', topic);
 app.use('/subject', subject);
 app.use('/posts', post);
