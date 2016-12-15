@@ -1,10 +1,15 @@
 <html>
 <head>
     <title>Topics</title>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/TRROStylesheet.css">
 </head>
-<body>
+<body style = "background-color: #c9ddff">
 <h1>Topics</h1>
-
+<ul>
+    <li><a class="nav" href="../">Home</a></li>
+    <li><a class="nav" style ="background-color:#ff0000" href="#">Forums</a></li>
+    <li><a class="nav" href="classes.html">About</a></li>
+</ul>
 <br />
 <table border="1">
     <tr><th>Topic Name:</th><th>Description:</th><th>Information</th><th>Action</th></tr>
@@ -14,11 +19,12 @@
         <td><%= result[i].description %></td>
         <td>
             Creator:
+            <br/>
             <a href="/user/?account_id=<%= result[i].creator_ID %>">
                 <%= result[i].creator_name %>
             </a>
             <br />
-            Creation Date: <%= result[i].date_of_creation %>
+            Creation Date: <br/> <%= result[i].date_of_creation %>
             <br>
         </td>
         <td>

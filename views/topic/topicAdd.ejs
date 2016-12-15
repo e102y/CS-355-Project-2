@@ -1,13 +1,20 @@
 <html>
 <head>
     <title>Add New Topic</title>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/TRROStylesheet.css">
 </head>
-<body>
+<body style = "background-color: #c9ddff">
 <h1>Add New Topic</h1>
+<ul>
+    <li><a class="nav" href="../">Home</a></li>
+    <li><a class="nav" href="./all">Topics</a></li>
+    <li><a class="nav" href="classes.html">About</a></li>
+</ul>
+<br/>
 <form action="/topic/insert" method="get">
-    Topic Name: <input id="topic_name" name="topic_name" type="text" />
+    Topic Name: <input id="topic_name" name="topic_name" type="text" style="width:25em" />
     <br />
-    Topic Description: <input id="topic_description" name="topic_description" type="text" style="width:500px" />
+    Topic Description: <input id="topic_description" name="topic_description" type="text" style="width:75em" />
     <br />
     <br />
     User:

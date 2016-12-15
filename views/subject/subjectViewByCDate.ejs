@@ -5,12 +5,16 @@
         <%= a %>
     </title>
     <% ; %>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/TRROStylesheet.css">
 </head>
-<body>
+<body style = "background-color: #c9ddff">
 <h1><%= a; %></h1>
-<a href="/topic/all">
-    Return to Topics
-</a>
+<ul>
+    <li><a class="nav" href="../">Home</a></li>
+    <li><a class="nav" href="../topic/all">Topics</a></li>
+    <li><a class="nav" href="classes.html">About</a></li>
+</ul>
+<br/>
 <ul>
     <table border="1">
         <tr><th>Subject Name:</th><th>Description:</th><th>Information</th><th>Actions</th></tr>
@@ -20,11 +24,13 @@
             <td><%= result[i].description %></td>
             <td>
                 Creator:
-                <a href="/user/?user_id=<%= result[i].creator_id %>">
+                <br/>
+                <a href="/user/?user_id=<%= result[i].creator_ID %>">
                     <%= result[i].creator_name %>
                 </a>
                 <br />
                 Creation Date:
+                <br/>
                 <%= result[i].date_of_creation %>
                 <br>
             </td>

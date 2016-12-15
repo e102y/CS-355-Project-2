@@ -26,6 +26,7 @@ app.use(require('less-middleware')(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
+app.use('/index', index);
 app.use('/topic', topic);
 app.use('/subject', subject);
 app.use('/posts', post);

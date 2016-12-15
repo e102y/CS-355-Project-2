@@ -5,12 +5,16 @@
         <%= a; %>
     </title>
     <% ; %>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/TRROStylesheet.css">
 </head>
-<body>
+<body style = "background-color: #c9ddff">
 <h1><%= a; %></h1>
-<a href="/subject/?topic_id=<%= topic_id %>">
-    Return to Subject
-</a>
+<ul>
+    <li><a class="nav" href="../">Home</a></li>
+    <li><a class="nav" href="../subject/?topic_id=<%= topic_id %>">Subjects</a></li>
+    <li><a class="nav" href="classes.html">About</a></li>
+</ul>
+<br/>
 <ul>
     <table border="1">
         <tr><th>Information</th><th>Post:</th><th>Actions</th></tr>
@@ -18,7 +22,7 @@
         <td style="width:100px;">
             <br />
             <h4 style = "display: block;margin-top: 0; margin-bottom: 0;text-align: center;">
-            <a href="/user/?user_id=<%= result[i].poster_id %>">
+            <a href="/user/?user_id=<%= result[i].poster_ID %>">
                     <%= result[i].poster_name %>
                 </a>
             </h4>
