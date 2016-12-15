@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var topic_dal = require('../model/topic_dal');
+var user_dal = require('../model/user_dal');
 
 
 // View All topics
@@ -35,8 +36,15 @@ router.get('/', function(req, res){
 
 router.get('/add', function(req, res){
     // passing all the query parameters (req.query) to the insert function instead of each individually
+    user_dal.getAll(function(err,result) {
+        if (err) {
+            res.send(err);
+        }
+        else {
+            res.render('topic/topicAdd', {'user': result});
+        }
+    });
 
-    res.render('topic/topicAdd');
 
 });
 
@@ -44,14 +52,17 @@ router.get('/add', function(req, res){
 router.get('/insert', function(req, res){
     console.log(req.query);
     // simple validation
-    if(req.query.topic_fname == null) {
-        res.send('a first name must be provided.');
+    if(req.query.topic_name == null) {
+        res.send('a name for the topic must be provided.');
     }
-    else if(req.query.topic_lname == null) {
-        res.send('A last name must be provided');
+    else if(req.query.topic_description == null) {
+        res.send('A description for the topic must be provided');
     }
-    if(req.query.topic_email == null) {
-        res.send('an e-mail must be provided.');
+    else if(req.query.creator_id == null) {
+        res.send('a user must be selected.');
+    }
+    else if(req.query.moderator_id == null) {
+        res.send('a moderator must be selected.');
     }
     else {
         // passing all the query parameters (req.query) to the insert function instead of each individually

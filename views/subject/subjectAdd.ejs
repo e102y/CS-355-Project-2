@@ -1,0 +1,27 @@
+<html>
+<head>
+    <title>Add New Subject</title>
+</head>
+<body>
+<h1>Add New Subject</h1>
+<form action="/subject/insert" method="get">
+    Subject Name: <input id="subject_name" name="subject_name" type="text" />
+    <br />
+    Subject Description: <input id="subject_description" name="subject_description" type="text" style="width:500px" />
+    <br />
+    <br />
+    User:
+    <select id="creator_id" name="creator_id">
+        <% for(var i=0; user.length > i; i++ ) { %>
+        <option value="<%= user[i].account_id %>"><%= user[i].username %></option>
+        <% } %>
+    </select>
+    <br />
+    <input type="hidden" name="topic_id" id="topic_id" value="<%= topic_id %>" />
+    <br />
+    <input type="submit" name="Create" />
+
+</form>
+</body>
+
+</html>

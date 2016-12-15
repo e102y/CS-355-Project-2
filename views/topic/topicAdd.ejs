@@ -1,0 +1,33 @@
+<html>
+<head>
+    <title>Add New Topic</title>
+</head>
+<body>
+<h1>Add New Topic</h1>
+<form action="/topic/insert" method="get">
+    Topic Name: <input id="topic_name" name="topic_name" type="text" />
+    <br />
+    Topic Description: <input id="topic_description" name="topic_description" type="text" style="width:500px" />
+    <br />
+    <br />
+    User:
+    <select id="creator_id" name="creator_id">
+        <% for(var i=0; user.length > i; i++ ) { %>
+        <option value="<%= user[i].account_id %>"><%= user[i].username %></option>
+        <% } %>
+    </select>
+    <br />
+    Moderator:
+    <select id="moderator_id" name="moderator_id">
+        <% for(var i=0; user.length > i; i++ ) { %>
+        <option value="<%= user[i].account_id %>"><%= user[i].username %></option>
+        <% } %>
+    </select>
+    <br />
+    <br />
+    <input type="submit" name="Create" />
+
+</form>
+</body>
+
+</html>

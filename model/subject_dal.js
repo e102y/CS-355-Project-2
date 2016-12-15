@@ -6,9 +6,9 @@ var connection = mysql.createConnection(db.config);
 
 
 
-exports.getById = function(topic_date, callback) {
-    var query = 'SELECT * FROM SubjectsinaTopic WHERE topic_date = ?';
-    var queryData = [topic_date];
+exports.getById = function(topic_id, callback) {
+    var query = 'SELECT * FROM SubjectsinaTopic WHERE topic_id = ?;';
+    var queryData = [topic_id];
 
     connection.query(query, queryData, function(err, result) {
         callback(err, result);
@@ -23,11 +23,11 @@ exports.getById = function(topic_date, callback) {
  Group By u.date_of_creation;
  */
 exports.insert = function(params, callback) {
-    var query = 'CALL NewSubject(\'?\', \'?\', ?, \'?\');';
+    var query = 'CALL NewSubject(?, ?, ?, ?);';
 
     // the question marks in the sql query above will be replaced by the values of the
     // the data in queryData
-    var queryData = [params.subject_description, subject_title, params.creator_id, topic_title];
+    var queryData = [params.subject_description, params.subject_name, params.creator_id, params.topic_id];
 
     connection.query(query, queryData, function(err, result) {
         callback(err, result);

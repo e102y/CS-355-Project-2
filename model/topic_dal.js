@@ -24,11 +24,11 @@ exports.getById = function(creator_id, callback) {
 };
 
 exports.insert = function(params, callback) {
-    var query = 'CALL NewTopic(\'?\', \'?\', ?, ?);';
+    var query = 'CALL NewTopic(?, ?, ?, ?);';
 
     // the question marks in the sql query above will be replaced by the values of the
     // the data in queryData
-    var queryData = [params.topic_description, topic_title, params.creator_id, params.moderator_id];
+    var queryData = [params.topic_description, params.topic_name, params.creator_id, params.moderator_id];
 
     connection.query(query, queryData, function(err, result) {
         callback(err, result);

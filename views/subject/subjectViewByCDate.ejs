@@ -1,21 +1,30 @@
 <html>
 <head>
-    <title>Subjects Under <%= result[0].topicTitle %></title>
+    <% var a; if(result.length > 0){ a = "Subjects Under " + result[0].topicTitle } else { a = "Empty Topic" }  %>
+    <title>
+        <%= a %>
+    </title>
+    <% ; %>
 </head>
 <body>
 <h1>Subjects</h1>
+<a href="/topic/all">
+    Return to Topics
+</a>
 <ul>
     <table border="1">
-        <tr>Subject Name:<th></th><th>Description:</th><th>Information</th></tr>
+        <tr><th>Subject Name:</th><th>Description:</th><th>Information</th><th>Actions</th></tr>
         <% for(var i=0; result.length > i; i++ ) { %>
         <tr>
             <td><a href="/post/?topic_date=<%= result[i].date_of_creation %>"><%= result[i].title %></a></td>
             <td><%= result[i].description %></td>
             <td>
+                Creator:
                 <a href="/user/?account_id=<%= result[i].creator_id %>">
                     <%= result[i].creator_name %>
                 </a>
                 <br />
+                Creation Date:
                 <%= result[i].date_of_creation %>
                 <br>
             </td>
@@ -28,6 +37,7 @@
         <% } %>
     </table>
 </ul>
+<a href="/subject/add?topic_id=<%= topic_id %>">Add New Subject</a> <br />
 </body>
 
 </html>

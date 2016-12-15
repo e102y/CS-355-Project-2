@@ -1,20 +1,20 @@
 var express = require('express');
 var router = express.Router();
 var subject_dal = require('../model/subject_dal');
-
+var user_dal = require('../model/user_dal');
 
 // View the subject for the given id
 router.get('/', function(req, res){
-    if(req.query.topic_date == null) {
-        res.send('topic date is null');
+    if(req.query.topic_id == null) {
+        res.send('topic id is null');
     }
     else {
-        subject_dal.getById(req.query.topic_date, function(err,result) {
+        subject_dal.getById(req.query.topic_id, function(err,result) {
             if (err) {
                 res.send(err);
             }
             else {
-                res.render('subject/subjectViewByCDate', {'result': result});
+                res.render('subject/subjectViewByCDate', {'result': result, 'topic_id' : req.query.topic_id});
             }
         });
     }
@@ -22,8 +22,15 @@ router.get('/', function(req, res){
 
 router.get('/add', function(req, res){
     // passing all the query parameters (req.query) to the insert function instead of each individually
+    user_dal.getAll(function(err,result) {
+        if (err) {
+            res.send(err);
+        }
+        else {
+            res.render('subject/subjectAdd', {'user': result, 'topic_id' : req.query.topic_id});
+        }
+    });
 
-    res.render('subject/subjectAdd');
 
 });
 
@@ -31,14 +38,14 @@ router.get('/add', function(req, res){
 router.get('/insert', function(req, res){
     console.log(req.query);
     // simple validation
-    if(req.query.subject_fname == null) {
-        res.send('a first name must be provided.');
+    if(req.query.subject_name == null) {
+        res.send('a name for the subject must be provided.');
     }
-    else if(req.query.subject_lname == null) {
-        res.send('A last name must be provided');
+    else if(req.query.subject_description == null) {
+        res.send('A description for the subject must be provided');
     }
-    if(req.query.subject_email == null) {
-        res.send('an e-mail must be provided.');
+    else if(req.query.creator_id == null) {
+        res.send('a user must be selected.');
     }
     else {
         // passing all the query parameters (req.query) to the insert function instead of each individually
@@ -48,12 +55,11 @@ router.get('/insert', function(req, res){
             }
             else {
                 //poor practice, but we will handle it differently once we start using Ajax
-                res.redirect(302, '/topic/all');
+                res.redirect(302, '/subject/?topic_id=' + req.query.topic_id);
             }
         });
     }
 });
-
 
 // Delete a subject for the given creation date
 router.get('/delete', function(req, res){
