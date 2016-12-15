@@ -65,3 +65,11 @@ exports.edit = function(topic_id, callback) {
         callback(err, result);
     });
 };
+
+exports.obligatoryAggregate = function(callback) {
+    var query = 'Select count(posts) as subjects FROM subjectCount;';
+
+    connection.query(query, function(err, result) {
+        callback(err, result);
+    });
+};

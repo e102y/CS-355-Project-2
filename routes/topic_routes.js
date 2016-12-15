@@ -6,13 +6,15 @@ var user_dal = require('../model/user_dal');
 
 // View All topics
 router.get('/all', function(req, res) {
+    topic_dal.obligatoryAggregate(function(err1, result1){
     topic_dal.getAll(function(err, result){
         if(err) {
             res.send(err);
         }
         else {
-            res.render('topic/topicViewAll', { 'result':result });
+            res.render('topic/topicViewAll', { 'result':result, 'result1':result1 });
         }
+    });
     });
 
 });
