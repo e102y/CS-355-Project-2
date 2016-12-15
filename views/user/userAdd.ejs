@@ -1,37 +1,51 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <title>Add New Account</title>
+    <title>Add New User</title>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/TRROStylesheet.css">
 </head>
-<body>
-<h1>Add New Account</h1>
-<form action="/account/insert" method="get">
-    First Name: <input id="account_fname" name="account_fname" type="text" />
+<body style = "background-color: #c9ddff">
+<h1>Add New User</h1>
+<ul>
+    <li><a class="nav" href="/">Home</a></li>
+    <li><a class="nav" href="/topic/all">Forums</a></li>
+    <li><a class="nav" href="/about">About</a></li>
+    <li><a class="nav" href="/user/all">Users</a></li>
+</ul>
+<br/>
+<form action="/user/insert" method="get">
+    First Name: <input id="user_fname" name="user_fname" type="text" />
     </br>
-    Last Name: <input id="account_lname" name="account_lname" type="text" />
+    Last Name: <input id="user_lname" name="user_lname" type="text" />
     </br>
-    Username: <input id="account_username" name="account_username" type="text" />
+    Username: <input id="user_username" name="user_username" type="text" />
     </br>
     Birthdate:
     <% var month = ["January", "Febuary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]; %>
     <br/>
     Day:
-    <select id="account_Bday" name="account_Bday">
+    <select id="user_Bday" name="user_Bday">
         <% for(var i=1; 32 > i; i++ ) { %>
         <option value=<%=i%>><%=i%></option>
         <% } %>
     </select>
     Month:
-    <select id="account_Bmonth" name="account_Bmonth">
+    <select id="user_Bmonth" name="user_Bmonth">
         <% for(var i=1; 13 > i; i++ ) { %>
         <option value=<%= i %>><%= month[i-1] %></option>
         <% } %>
     </select>
     Year:
-    <select id="account_Byear" name="account_Byear">
+    <select id="user_Byear" name="user_Byear">
         <% for(var i=2010; 1914 < i; i-- ) { %>
         <option value=<%=i%>><%=i%></option>
         <% } %>
     </select>
+    </br>
+    Bio:
+    <br/>
+    <input id="user_bio" name="user_bio" type="text" style="width:1000px"/>
+    </br>
     <input type="submit" />
 
 </form>

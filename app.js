@@ -32,7 +32,7 @@ app.use('/about', about);
 app.use('/topic', topic);
 app.use('/subject', subject);
 app.use('/posts', post);
-app.use('/users', user);
+app.use('/user', user);
 
 
 // catch 404 and forward to error handler
